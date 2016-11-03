@@ -7,5 +7,14 @@
 
 
 class CrawlRelatedChannelsPipeline(object):
+
+    def open_spider(self, spider):
+        self.file = open('url.txt', 'wb')
+
+    def close_spider(self, spider):
+        self.file.close()
+
     def process_item(self, item, spider):
+        url = item['channel_url'] + '/videos' + '\n'
+        self.file.write(url)
         return item

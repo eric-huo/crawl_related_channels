@@ -13,7 +13,7 @@ BOT_NAME = 'crawl_related_channels'
 
 SPIDER_MODULES = ['crawl_related_channels.spiders']
 NEWSPIDER_MODULE = 'crawl_related_channels.spiders'
-
+DEPTH_LIMIT = 3
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'crawl_related_channels (+http://www.yourdomain.com)'
@@ -64,17 +64,17 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'crawl_related_channels.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'crawl_related_channels.pipelines.CrawlRelatedChannelsPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-#AUTOTHROTTLE_START_DELAY = 5
+AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
-#AUTOTHROTTLE_MAX_DELAY = 60
+AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
 #AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
